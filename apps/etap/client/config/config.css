@@ -1,0 +1,60 @@
+.nolink {
+	text-decoration: none;
+	color: black;
+	cursor: default;
+}
+
+.scmrow {
+	margin-top: 30px;
+}
+
+
+.scmtitle {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.scmdescr {
+	font-style: italic;
+	font-size: 0.7em;
+	margin-bottom: 5px;
+}
+
+
+
+.fld-ent-title {
+	height: 30px;
+	font-weight: bold;
+	margin-top: 30px;
+	display: flex;
+	align-items: center;
+	padding-left: 10px;
+}
+
+
+.fld-ent-field {
+	display: flex;
+	flex-direction: row;
+	align-content: flex-start;
+	flex-wrap: wrap;
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.fld-ent-label {
+	width: 100px;
+	height: 30px;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.fld-ent-value {
+	width: 300px;
+	
+}
+
+
+

@@ -1,0 +1,39 @@
+<div id="mainlayout" class="easyui-layout" data-options="fit: true">
+
+		<div class="container-bar" data-options="region:'north'" style="height: 40px; border: 0px; box-shadow: 10px 10px 5px grey; overflow: hidden;">
+			<div class="row" style="vertical-align: middle; overflow: hidden;">
+				<div class="column left">
+					<a id="btn_menu_back" class="easyui-linkbutton" iconCls="icon-back" data-options="plain:true"></a>
+					<a id="btn_apps_back" class="easyui-linkbutton" iconCls="icon-back" data-options="plain:true"></a>
+				</div>
+				<div class="column middle" style="padding: 0px; display: table; margin: auto;height: 37px;">
+					<div id="obj_txt_title" class="hpagetitle container-bar" style="display: table-cell; vertical-align:middle;">
+					</div>
+				</div>
+				<div class="column right" style="overflow: hidden" >
+					<div>
+					<a id="btn_home" class="easyui-linkbutton c8">Home</a>
+					<a id="btn_logout" class="easyui-linkbutton c8">Logout</a>
+					<span id="btn_preference"  style="float: right; height: 32px; width: 32px; margin-top: 0px; ">
+						<div class="icon-preference-fg" style="margin-top: 5px"></div>
+					</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div data-options="region:'center'" style="margin: 0px; padding: 0px">
+			<div id="pnl_menu" class="easyui-panel" data-options="fit: true, border: false" style="padding: 20px">
+
+
+				<a id="btn_testmenu" class="easyui-linkbutton c4">Test Menu Click</a>
+
+
+			</div>
+			<iframe id="pnl_iframe" class="easyui-panel" style="display: none;" data-options="fit: true">
+
+			</iframe>
+		</div>
+
+</div>
+

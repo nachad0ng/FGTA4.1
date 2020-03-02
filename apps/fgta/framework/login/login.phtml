@@ -1,0 +1,10 @@
+<?php
+switch (__APPNAME) {
+	case "kalista" :
+		require_once dirname(__FILE__).'/login-kalista.phtml';
+		break;
+
+	default:
+		require_once dirname(__FILE__).'/login-fgta.phtml';
+}
+

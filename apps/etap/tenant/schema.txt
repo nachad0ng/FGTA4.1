@@ -1,0 +1,26 @@
+prov  <---------- city <----------- district
+										|                
+										|
+										v
+								  	   loc   ------------>  loctype
+										|
+										v
+company <---------------------------- store  ---------------\
+   |                                    |                   |
+   |--------------\                     |                   |
+   |              |                     |                   |
+   v              v                     v                   v
+companybrand  companypic           storepic          bussinesstype  
+   |                                                        ^
+   |                                                        |
+   v                                                        |
+brand -----------------------------------------------------/                                     
+
+
+
+
+
+sale
+saleitem
+salepaym
+

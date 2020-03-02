@@ -1,0 +1,176 @@
+<div id="pnl_edit">
+	<div class="fgta-page-title" style="display: flex; align-items: center ">
+		<div>Edit</div>
+		<a id="pnl_edit-btn_edit" href="javascript:void(0)" class="easyui-linkbutton" style="margin-left:10px;" data-options="plain:true,iconCls:'fgta-icon-edit'">edit</a>
+	</div>
+
+
+	<form id="pnl_edit-form">
+
+
+
+		<div class="form_row">
+			<div class="form_label_col">ID</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_logship_id" class="easyui-textbox" mapping="logship_id" maxlength="13" style="width: 400px">
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col">Ref</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_logship_ref" class="easyui-textbox" mapping="logship_ref" maxlength="30" style="width: 400px" data-options="disabled:true">
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col">Brand</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_brand_id" class="easyui-combo" mapping="brand_id" display="brand_name" maxlength="10" style="width: 400px" data-options="disabled: true">
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col">Principal</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_partner_id" class="easyui-combo" mapping="partner_id" maxlength="13" style="width: 400px">
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col">Season</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_sea_id" class="easyui-combo" mapping="sea_id" maxlength="10" style="width: 400px">
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col">Currency</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_curr_id" class="easyui-combo" mapping="curr_id" maxlength="10" style="width: 400px">
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col">Metode</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_logshipmethod_id" class="easyui-combo" mapping="logshipmethod_id" maxlength="13" style="width: 400px">
+			</div>
+		</div>
+
+
+		<div class="form_row">
+			<div class="form_label_col">Term of Shipment</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_logshipterm_id" class="easyui-combo" mapping="logshipterm_id" maxlength="13" style="width: 400px">
+			</div>
+		</div>
+
+
+
+		<div class="form_row">
+			<div class="form_label_col">Tanggal Doc</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-dt_logship_date" class="easyui-datebox" style="width: 400px" mapping="logship_date" data-options="editable:false">
+			</div>
+		</div>
+
+
+		<div class="form_row">
+			<div class="form_label_col">Tgl Pickup</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-dt_logship_dtpickup" class="easyui-datebox" style="width: 400px" mapping="logship_dtpickup" data-options="editable:false">
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col">ETD</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-dt_logship_dtetd" class="easyui-datebox" style="width: 400px" mapping="logship_dtetd" data-options="editable:false">
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col">ETA</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-dt_logship_dteta" class="easyui-datebox" style="width: 400px" mapping="logship_dteta" data-options="editable:false">
+			</div>
+		</div>
+
+
+
+		<div class="form_row">
+			<div class="form_label_col">Qty</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_logship_qty" class="easyui-numberbox" mapping="logship_qty" style="width: 400px" data-options="disabled:true" >
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col">Value</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_logship_value" class="easyui-numberbox" mapping="logship_value" style="width: 400px" data-options="disabled:true">
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col">Referensi PO</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_logship_po" class="easyui-textbox" mapping="logship_po" maxlength="30" style="width: 400px">
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col">No DM</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_logship_dm" class="easyui-textbox" mapping="logship_dm" maxlength="30" style="width: 400px">
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col">Form E</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_logship_form_e" class="easyui-textbox" mapping="logship_form_e" maxlength="30" style="width: 400px">
+			</div>
+		</div>
+
+		<div class="form_row">
+			<div class="form_label_col">Form D</div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<input id="pnl_edit-txt_logship_form_d" class="easyui-textbox" mapping="logship_form_d" maxlength="30" style="width: 400px">
+			</div>
+		</div>
+
+
+	</form>
+
+
+	<div class="form_row" style="margin-top: 30px">
+		<div class="form_label_col"></div>
+		<div class="form_input_col" style="border: 0px solid black">
+			<a id="pnl_edit-btn_save" class="easyui-linkbutton c1" style="width">Simpan</a>
+		</div>
+	</div>	
+
+	<div id="pnl_detilinfo" class="form_row" style="margin-top: 30px">
+		<div class="form_label_col"></div>
+		<div class="form_input_col" style="border: 0px solid black">
+			<b>Detil Informations</b><br>
+			<ul>
+				<li><a href="javascript:void(0)" onclick="$ui.getPages().ITEMS['pnl_edit'].handler.OpenPackingList()">Packing List</a></li>
+				<li><a href="javascript:void(0)">Invoice</a></li>
+				<li><a href="javascript:void(0)">Documents</a></li>
+			</ul>	
+		</div>		
+	</div>
+
+	<div style="margin-top: 30px; margin-left:-5px; margin-right: -5px; background-color: #cccccc; height: 40px; display: flex; justify-content: space-between; padding: 5px 2px 2px 2px ">
+		<div>
+			<!-- letakkan tombol yang lin disini -->
+		</div>
+		<div>
+			<a id="pnl_edit-btn_delete" class="easyui-linkbutton c5" style="width">Hapus</a>
+		</div>
+	</div>
+
+</div>

@@ -1,0 +1,14 @@
+{
+	"description" : "Daftar ",
+	"groups" : [
+		"super",
+		"administrator",
+		"director",
+		"generalmanager",
+		"brandmanager",
+		"merchandiser",
+		"brandadmin",
+		"accountingmanager",
+		"accountingstaff"
+	]
+}

@@ -1,0 +1,55 @@
+{
+	"title": "home",
+	"modules": [
+		{
+			"title" : "Administrator",
+			"disabled" : false,
+			"modules" : [
+				"fgta/framework/fggroup",
+				"fgta/framework/fguser"				
+			]
+		},
+
+		{
+			"title" : "Enterprise",
+			"disabled" : false,
+			"modules" : [
+				{
+					"title" : "Master Data",
+					"disabled" : false,
+					"modules" : [
+						"ent/mst/curr",
+						"ent/mst/unitgroup",
+						"ent/mst/unit",
+
+						"ent/mst/partnertype",
+						"ent/mst/partnerorg",
+
+						"ent/mst/country",
+
+						"ent/mst/bank"
+					]
+				}	
+			]
+		},
+
+		{
+			"title" : "Retail",
+			"disabled" : false,
+			"modules" : [
+				{
+					"title" : "Inventory",
+					"disabled" : false,
+					"modules" : [
+						"retail/inv/seagroup",
+						"retail/inv/sea"
+					]					
+				}
+				
+			]
+		}
+
+
+
+	]
+}

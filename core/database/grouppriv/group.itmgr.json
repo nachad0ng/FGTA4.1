@@ -1,0 +1,14 @@
+{
+	"group_id" : "itmgr",
+	"memberof" : [
+		"super",
+		"administrator",
+		"director",
+		"generalmanager",
+		"brandmanager",
+		"merchandiser",
+		"brandadmin",
+		"accountingmanager",
+		"accountingstaff"
+	]
+}

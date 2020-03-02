@@ -1,0 +1,40 @@
+<div id="pnl_list">
+	<div class="fgta-page-title">Daftar</div>
+
+
+	<div id="pnl_list-pnl_head" style="display: flex;">
+		<!-- Simple Query -->
+		<div style="width: calc(100% - 65px); display: flex;">
+			<div style="width: 100px;">Cari</div>
+			<div style="width: 150px">
+				<input id="pnl_list-txt_search" class="easyui-textbox" style="width: 100%">
+			</div>
+			<div>
+				<a href="javascript:void(0)" id="pnl_list-btn_load" class="easyui-linkbutton c8" style="width: 45px">Load</a>
+			</div>
+		</div>
+		<div style="text-align: right; width: 65px; float: right;">
+			<a href="javascript:void(0)" id="pnl_list-btn_new" class="easyui-linkbutton c8" style="width: 60px">Baru</a>
+		</div>
+	</div>
+
+	<div style="margin-top: 10px">
+		<table id="pnl_list-tbl_list" paging="true" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th mapping="logshipmethod_id">logshipmethod_id</th>
+					<th mapping="logshipmethod_name">logshipmethod_name</th>
+
+				</tr>
+				<tr style="background-color: #cccccc; height: 30px">
+					<td style="width: 100px; border-bottom: 1px solid #000000">ID</td>
+					<td style="width: 100px; border-bottom: 1px solid #000000">Name</td>
+
+				</tr>
+			</thead>
+		</table>
+	</div>
+
+
+
+</div>
