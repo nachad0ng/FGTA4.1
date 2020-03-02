@@ -1,7 +1,0 @@
-{
-	"title" : "Etap Client Config",
-	"allowanonymous" : false,
-	"allowedgroups" : ["public"],
-	"apis" : {
-	}
-}
