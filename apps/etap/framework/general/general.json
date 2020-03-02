@@ -1,9 +1,0 @@
-{
-	"title" : "Brand",
-	"allowanonymous" : false,
-	"allowedgroups" : ["public"],
-	"apis" : {
-		"loglist" : { "allowanonymous": false }
-	}	
-}
-

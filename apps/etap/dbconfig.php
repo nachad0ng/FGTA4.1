@@ -1,2 +1,0 @@
-<?php
-$GLOBALS['MAINDB'] = 'ETAP';

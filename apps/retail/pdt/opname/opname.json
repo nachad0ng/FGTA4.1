@@ -1,8 +1,0 @@
-{
-	"title" : "Opname",
-	"allowanonymous" : false,
-	"allowedgroups" : ["public"],
-	"apis" : {
-		"getstocksite" : { "allowanonymous" : false }
-	}
-}

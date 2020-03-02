@@ -1,1 +1,0 @@
-export const getstocksite = 'retail/pdt/opname/getstocksite'
