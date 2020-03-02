@@ -1,0 +1,31 @@
+<div id="pnl_selpartner">
+	<div class="fgta-page-title" style="display: flex; align-items: center ">
+		<div>Pilih Partner</div>
+	</div>
+
+	<div style="width: calc(100% - 65px); display: flex;">
+		<div style="width: 100px;">Cari</div>
+		<div style="width: 150px">
+			<input id="pnl_selpartner-txt_search" class="easyui-textbox" style="width: 100%">
+		</div>
+		<div>
+			<a href="javascript:void(0)" id="pnl_selpartner-btn_load" class="easyui-linkbutton c8" style="width: 45px">Load</a>
+		</div>
+	</div>
+
+	<div style="margin-top: 10px">
+		<table id="pnl_selpartner-tbl_list" paging="true" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th mapping="partner_id">id</th>
+					<th mapping="partner_name">text</th>
+				</tr>
+				<tr style="background-color: #cccccc; height: 30px">
+					<td style="width: 100px; border-bottom: 1px solid #000000">ID</td>
+					<td style="width: 100px; border-bottom: 1px solid #000000">Partner</td>
+				</tr>
+			</thead>
+		</table>
+	</div>
+
+</div>

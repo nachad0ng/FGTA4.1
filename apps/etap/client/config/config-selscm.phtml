@@ -1,0 +1,43 @@
+<div id="pnl_selscm">
+	<div class="fgta-page-title">Select Schema</div>
+
+	<div class="scmrow">
+		<div class="scmtitle">Single Table</div>
+		<div class="scmdescr">
+			Seluruh transaksi disimpan dalam satu tabel. Hanya untuk satu macam pembayaran.
+		</div>
+		<div class="scmpicdiv">
+			<a href="javascript:void(0)" schema="1" enabled="true" onclick="$ui.lst_scm_click(this)">
+				<img src="/index.php/asset/etap/client/config/images/schema1.svg">
+			</a>	
+		</div>
+	</div>
+
+
+	<div class="scmrow">
+		<div class="scmtitle">Master - Detil, single payment</div>
+		<div class="scmdescr">
+			Table data dipisahkan antara informasi bon penjualan dengan item penjualan. 
+			Hanya diperbolehkan untuk satu macam pembayaran.
+		</div>
+		<div class="scmpicdiv">
+			<a href="javascript:void(0)" schema="2" enabled="true" onclick="$ui.lst_scm_click(this)">
+				<img src="/index.php/asset/etap/client/config/images/schema2.svg">
+			</a>	
+		</div>
+	</div>	
+
+
+	<div class="scmrow">
+		<div class="scmtitle">Master - Detil, multi payment</div>
+		<div class="scmdescr">
+			Table data dipisahkan antara informasi bon penjualan, item penjualan, dan data pembayaran. 
+			Memungkinkan untuk lebih dari satu macam pembayaran.
+		</div>
+		<div class="scmpicdiv">
+			<a href="javascript:void(0)" schema="3" enabled="true" onclick="$ui.lst_scm_click(this)">
+				<img src="/index.php/asset/etap/client/config/images/schema3.svg">
+			</a>	
+		</div>
+	</div>	
+</div>
