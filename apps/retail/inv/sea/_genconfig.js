@@ -7,6 +7,7 @@ module.exports = {
 	title: "Season",
 	autoid: false,
 
+	
 	persistent: {
 		'mst_sea' : {
 			primarykeys: ['sea_id'],

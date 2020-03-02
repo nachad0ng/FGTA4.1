@@ -111,9 +111,8 @@ export async function init(opt) {
 
 export function OnSizeRecalculated(width, height) {
 	// TODO hitung kembali lebar text sesuai lebar halaman
+
 }
-
-
 
 
 export function open(data, rowid, viewmode=true, fn_callback) {
