@@ -153,7 +153,13 @@ class SqlUtility {
 	public static function Lookup($value, $db, $tablename, $field_id, $field_display) {
 		try {
 			$row = self::LookupRow($value, $db, $tablename, $field_id);
-			return $row[$field_display];
+			if (is_array($row)) {
+				if (array_key_exists($field_display, $row)) {
+					return $row[$field_display];
+				} 
+			}
+			return $value;
+			
 		} catch (\Exception $ex) {
 			throw $ex;
 		}
