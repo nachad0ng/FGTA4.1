@@ -127,6 +127,7 @@ genconfig.dirname = __dirname
 		}
 
 
+
 		console.log('\r\n\r\nGenerate Selesai\r\n' )
 		console.log('\x1b[1m' + '==================' + '\x1b[0m')
 		console.log('\x1b[5m' + '\x1b[1m' +' PERHATIAN ' + '\x1b[0m')
@@ -144,7 +145,9 @@ genconfig.dirname = __dirname
 				var allowed = ['Y', 'y', 'N', 'n']
 				if (allowed.includes(answer)) {
 					rl.close();
-					fs.writeFileSync(path.join(genconfig.programpath, `${genconfig.basename}.genlock`), `Program generated at ` + (new Date()).toISOString())
+					if (answer=='Y' || answer=='y') {
+						fs.writeFileSync(path.join(genconfig.programpath, `${genconfig.basename}.genlock`), `Program generated at ` + (new Date()).toISOString())
+					}
 					process.exit(0)
 				} else {
 					question()
