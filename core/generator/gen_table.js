@@ -126,9 +126,10 @@ async function CreateTableScript(tablename, options, headertable_name, headerpri
 		var ddl_fields = ''
 		for (var fieldname in options.data) {
 			var field = options.data[fieldname]
+			console.log(`${tablename} ${fieldname}`)
 			for (var propname in field) {
 				if (!field_props.includes(propname)) {
-					throw `property '${colFgYellow}${propname}${colReset}' pada field '${colBright}${fieldname}${colReset}' tidak dikenal!`
+					throw `table: '${tablename}', property '${colFgYellow}${propname}${colReset}' pada field '${colBright}${fieldname}${colReset}' tidak dikenal!`
 				}
 			}
 
