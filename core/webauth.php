@@ -28,6 +28,8 @@ class WebAuth {
 	}
 
 	public function session_autologout($expireAfter) {
+		global $_SESSION;
+
 		if(isset($_SESSION['last_action'])){
 			$secondsInactive = time() - $_SESSION['last_action'];
 			$expireAfterSeconds = $expireAfter * 60;
@@ -45,6 +47,7 @@ class WebAuth {
 	}
 
 	public function is_login() {
+		global $_SESSION;
 		if (!isset($_SESSION)) {
 			return false;
 		}
@@ -61,22 +64,32 @@ class WebAuth {
 	}
 
 	public function session_user_start($userdata) {
+		global $_SESSION;
 		$_SESSION['islogin']=1;
 		$_SESSION['userdata'] =  json_encode($userdata);
 	}
 
 	public function session_get_user() {
 		global $_SESSION;
-		return json_decode($_SESSION['userdata']);
+
+		if (is_array($_SESSION)) {
+			if (array_key_exists('userdata', $_SESSION)) {
+				return json_decode($_SESSION['userdata']);
+			}
+		}
+		return json_decode("{}");
 	}
 
 	public function session_user_logout() {
+		global $_SESSION;
 		unset($_SESSION['islogin']);
 		unset($_SESSION['userdata']);
 		session_destroy();
 	}
 
 	public function session_get_user_jsondata() {
+		global $_SESSION;
+
 		if (!isset($_SESSION)) {
 			return '';
 		}	
