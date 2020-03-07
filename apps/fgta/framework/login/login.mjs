@@ -100,7 +100,6 @@ function btn_login_click() {
 		} else {
 			try {
 				Cookies.set('tokenid', result.tokenid);
-
 				location.reload();
 			} catch (err) {
 				console.log(err);
