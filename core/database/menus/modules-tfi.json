@@ -45,7 +45,14 @@
 						"retail/inv/seagroup",
 						"retail/inv/sea"
 					]					
-				}
+				},
+				{
+					"title" : "Inventory Report",
+					"disabled" : false,
+					"modules" : [
+						"retail/invrpt/invart"
+					]					
+				}				
 				
 			]
 		}

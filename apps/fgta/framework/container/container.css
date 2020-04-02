@@ -57,8 +57,12 @@
 }
 
 .icon-back {
-	background: url('../../../../../images/icons/icon-back.png') no-repeat;
+	background: url('../../../../../images/icons/icon-back.png') no-repeat; 
+	background-position: center;
+	opacity: 1;
 }
+
+
 
 @media screen and (max-width: 450px) {
 	.hpagetitle {

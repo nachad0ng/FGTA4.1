@@ -6,8 +6,9 @@ error_reporting(E_ALL & ~E_DEPRECATED & ~E_STRICT);
 date_default_timezone_set('Asia/Jakarta');
 
 
+
 define('FGTA4', 1);
-define('__APPNAME', 'fgta');
+define('__APPNAME', 'kalista');
 define('__ROOT_DIR', realpath(dirname(__FILE__).'/..'));
 define('__BASEADDRESS', $_SERVER['REQUEST_SCHEME'] ."://".  $_SERVER['SERVER_NAME'] . rtrim($_SERVER['SCRIPT_NAME'], '/index.php') .'/');
 define('API_LOGIN_URL', 'fgta/framework/login/dologin');
@@ -46,7 +47,7 @@ $ROUTER = null;
 try {
 
 	$configuration = new \stdClass;
-	$configuration->basetitle = 'TFI';
+	$configuration->basetitle = 'TFI - Kalista';
 
 
 	if (!array_key_exists('PATH_INFO', $_SERVER)) {
@@ -106,8 +107,13 @@ try {
 		$ROUTER->auth = new WebAuth();
 		if ($currentapi!=API_LOGIN_URL) {
 			$ROUTER->auth->SessionCheck(); // selain API untuk login, harus dicek session nya
+		} 
+
+		if ($reqinfo->moduleconfig->title=='Container') {
+			$reqinfo->moduleconfig->title = $configuration->basetitle;
 		}
 
+		
 		if (method_exists($ROUTER, 'ProcessRequest')) {
 			$ROUTER->ProcessRequest($reqinfo);
 		}

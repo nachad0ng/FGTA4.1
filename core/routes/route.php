@@ -18,7 +18,6 @@ class Route {
 			throw new WebException("Format request salah", 400);
 		}
 		
-
 		$reqinfo = new \stdClass;
 		$reqinfo->reqs = $reqs;
 		$reqinfo->routeswitch = $reqs[0];

@@ -265,6 +265,7 @@ async function btn_home_click() {
 
 
 async function btn_apps_back_click() {
+
 	let iframecontent = el_pnl_iframe.contentWindow
 	if (typeof iframecontent.back === 'function') {
 		iframecontent.back((cancel) => {
@@ -276,15 +277,18 @@ async function btn_apps_back_click() {
 		OpenHomeMenu()
 	}
 
-	
 }
 
 async function btn_menu_back_click() {
 	// kembali ke menu sebelumnya
+
+	console.log('menu back')
 	if (CurrentState.LastMenuParentId!=undefined) {
 		let mdlist = ModuleShortcuts[CurrentState.LastMenuParentId]
 		CreateModuleList(mdlist)
 	}
+
+
 }
 
 
@@ -359,6 +363,7 @@ async function CreateModuleList(mdlist) {
 	CurrentState.LastMenuParentId = mdlist.parent_id;
 	obj_txt_title.html(mdlist.title)
 
+
 	if (mdlist.level > 1) {
 		// munculkan tombol back menu
 		if (mdlist.level==2) {
@@ -371,6 +376,9 @@ async function CreateModuleList(mdlist) {
 	} else {
 		cbutton.SwapButtonLeft(btn_menu_back, null)
 	}
+
+
+		
 
 	let prev_elpnl = pnl_menu[0].children[0]
 	let next_elpnl = document.createElement('div')  //pnl_menu[0]
@@ -398,9 +406,17 @@ async function CreateModuleList(mdlist) {
 		pnl_menu[0].appendChild(next_elpnl)
 
 		if (next_level>prev_level) {
-			fgta4pageslider.SlidePanelLeft(pnl_prev, pnl_next, true)
+			fgta4pageslider.SlidePanelLeft(pnl_prev, pnl_next, true, ()=>{
+				if (document.activeElement instanceof HTMLElement) {
+					document.activeElement.blur();
+				}
+			})
 		} else {
-			fgta4pageslider.SlidePanelRight(pnl_prev, pnl_next, true)
+			fgta4pageslider.SlidePanelRight(pnl_prev, pnl_next, true, ()=>{
+				if (document.activeElement instanceof HTMLElement) {
+					document.activeElement.blur();
+				}
+			})
 		}
 	}
 }

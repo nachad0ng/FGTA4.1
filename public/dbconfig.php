@@ -29,7 +29,14 @@ define('DB_CONFIG', [
 		'DSN' => "mysql:host=kalistadb-dev;dbname=kalistadb",
 		'user' => "root",
 		'pass' => "rahasia"
-	]
+	],
+
+	'DSR' => [
+		'DSN' => "firebird:dbname=172.18.10.11:DSR.FDB",
+		'user' => "SYSDBA",
+		'pass' => "Modul@Oblongata"
+	],	
+	
 ]);
 
 
