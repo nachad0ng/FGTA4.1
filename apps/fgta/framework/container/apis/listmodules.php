@@ -51,6 +51,9 @@ class ListModules extends WebAPI {
 	}
 
 	public function execute($username) {
+
+		$userdata = $this->auth->session_get_user();
+
 		$modulepath = self::getModuleListPath();
 		$modulesjsondata = file_get_contents($modulepath);
 		$modulesrawdata = json_decode($modulesjsondata, true);
@@ -58,12 +61,12 @@ class ListModules extends WebAPI {
 			throw new WebException("format json pada file '$modulepath' salah",  500);
 		}
 
-		$USERMODULES = $this->CreateModuleHierarchy($modulesrawdata['modules']);
+		$USERMODULES = $this->CreateModuleHierarchy($modulesrawdata['modules'], $userdata);
 		return $USERMODULES;
 	}
 
 
-	public function CreateModuleHierarchy($modules) {
+	public function CreateModuleHierarchy($modules, $userdata) {
 		if (!is_array($modules)) 
 			return;
 
@@ -71,14 +74,14 @@ class ListModules extends WebAPI {
 		foreach ($modules as $moduleitem) {
 			if (is_array($moduleitem)) {
 				// module group
-				$mdl = new ModuleGroup($moduleitem);
+				$mdl = new ModuleGroup($moduleitem, $userdata);
 				if (array_key_exists('modules', $moduleitem)) {
-					$mdl->MODULES = $this->CreateModuleHierarchy($moduleitem['modules']);
+					$mdl->MODULES = $this->CreateModuleHierarchy($moduleitem['modules'], $userdata);
 				}
 			} else {
 				// module
 				$modulefullname = $moduleitem;
-				$mdl = new ModuleShorcut($moduleitem);
+				$mdl = new ModuleShorcut($moduleitem, $userdata);
 			}
 			array_push($USERMODULES, $mdl);
 		}
@@ -101,7 +104,7 @@ class ModuleIcon {
 
 class ModuleGroup extends ModuleIcon  {
 	public $type = "modulegroup";
-	function __construct($modulegroup) {
+	function __construct($modulegroup, $userdata) {
 
 		$this->title = array_key_exists('title', $modulegroup) ? $modulegroup['title'] : 'modules group';
 		$this->icon = array_key_exists('icon', $modulegroup) ? $modulegroup['icon'] : 'icon-folder-white.png';
@@ -115,7 +118,11 @@ class ModuleGroup extends ModuleIcon  {
 
 class ModuleShorcut extends ModuleIcon {
 	public $type = "module";
-	function __construct($modulefullname) {
+
+	private $userdata;
+
+	function __construct($modulefullname, $userdata) {
+		$this->userdata = $userdata;
 		$this->modulefullname = $modulefullname;
 
 		$moduleinfo = $this->get_module_info($modulefullname);
@@ -139,9 +146,17 @@ class ModuleShorcut extends ModuleIcon {
 		$this->icon = $moduleconfig->icon;
 		$this->forecolor = $moduleconfig->forecolor;
 		$this->backcolor = $moduleconfig->backcolor;
-		$this->disabled = $moduleconfig->disabled;
+		//$this->disabled = $moduleconfig->disabled;
 		$this->allowedgroups = $moduleconfig->allowedgroups;
 		
+		// cek apakah modulenya diperbolehkan
+		$this->disabled = true;
+		foreach ($this->allowedgroups as $allowed_group) {
+			if (in_array($allowed_group, $this->userdata->groups)) {
+				$this->disabled = false;
+				break;
+			}
+		}
 		
 	}
 

@@ -1,5 +1,5 @@
 {
-	"description" : "Daftar ",
+	"description" : "Daftar Seluruh Group yang tersedia",
 	"groups" : [
 		"super",
 		"administrator",

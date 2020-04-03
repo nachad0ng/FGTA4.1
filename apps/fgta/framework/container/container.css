@@ -44,16 +44,16 @@
   
 
 .menubutton {
-	font-size: 0.9em;
+	font-size: 0.75em;
 	font-weight: bold;
 	text-decoration: none;
 }
 
 .menubutton:link {
-	font-size: 0.9em;
+	font-size: 0.75em;
 	font-weight: bold;
 	text-decoration: none;
-	color: #000
+	color: #000;
 }
 
 .icon-back {

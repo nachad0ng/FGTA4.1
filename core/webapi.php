@@ -27,6 +27,22 @@ class WebAPI {
 	}	
 
 	
+	public function RequestIsAllowedFor($reqinfo, $apiname, $user_owned_groups) {
+		try {
+
+			if (property_exists($reqinfo->moduleconfig->apis, $apiname)) {
+				return false;
+			}
+
+			$api_info = $reqinfo->moduleconfig->apis->$apiname;
+
+
+
+			return false;
+		} catch (\Exception $ex) {
+			throw $ex;
+		}
+	}
 
 }
 

@@ -60,7 +60,7 @@ if (!defined('FGTA4')) {
 
 
 		<script>
-			let global = {
+			window.global = {
 				modulefullname: "<?=$this->reqinfo->modulefullname?>",
 				now: () => {
 					var today = new Date(); 
@@ -228,7 +228,6 @@ if (!defined('FGTA4')) {
 
 	
 	<script>
-
 
 		window.preparemodule = async (fn_callback) => {
 			if (window.$ui!==undefined) {
