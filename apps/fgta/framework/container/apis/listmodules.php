@@ -135,6 +135,11 @@ class ModuleShorcut extends ModuleIcon {
 
 		// cek file konfigurasi
 		$moduleconfigpath = "$modulepath/$modulename.json";
+		$moduleconfigpath_ovveride = __ROOT_DIR."/core/database/progaccess/".str_replace("/", "#", $modulefullname) . ".json";
+		if (is_file($moduleconfigpath_ovveride)) {
+			$moduleconfigpath = $moduleconfigpath_ovveride;
+		}	
+
 		if (!is_file($moduleconfigpath)) {
 			$modulelistpath = ListModules::getModuleListPath();
 			throw new WebException("file konfigurasi untuk '$modulename' tidak ditemukan. ($moduleconfigpath). Cek file konfigurasi, atau mungkin salah penulisan di daftar module pada file '$modulelistpath'",  500);

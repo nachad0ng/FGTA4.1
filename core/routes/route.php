@@ -33,6 +33,12 @@ class Route {
 		$reqinfo->appgroupdbconfigpath =  __ROOT_DIR . "/apps/$reqinfo->appsgroup/dbconfig.php";
 		$reqinfo->rootpath = __ROOT_DIR;
 
+		$moduleconfigpath = $reqinfo->moduleconfigpath ;
+		$moduleconfigpath_override = __ROOT_DIR . "/core/database/progaccess/".str_replace("/", "#", $reqinfo->modulefullname) . ".json";
+		if (is_file($moduleconfigpath_override)) {
+			$reqinfo->moduleconfigpath = $moduleconfigpath_override;
+		}
+
 		$reqinfo->moduleconfig =  new WebModuleConfig($reqinfo->moduleconfigpath);
 
 		$this->reqinfo = $reqinfo;
