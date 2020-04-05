@@ -1,4 +1,6 @@
 <?php namespace FGTA4;
+
+
 ini_set("session.gc_maxlifetime", "65535");
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
@@ -36,7 +38,11 @@ define('DB_CONFIG_PARAM', [
 
 ob_start();
 
+//getenv('HTTP_SERVER_ENV');
 require_once __ROOT_DIR.'/public/dbconfig.php';
+
+
+
 require_once __ROOT_DIR.'/core/webauth.php';
 require_once __ROOT_DIR.'/core/webmoduleconfig.php';
 require_once __ROOT_DIR.'/core/errorpage.php';
