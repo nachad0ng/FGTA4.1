@@ -28,6 +28,13 @@ define('DB_CONFIG_PARAM', [
 		\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
 		\PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ,
 		\PDO::ATTR_PERSISTENT=>true			
+	],
+
+	'mssql' => [
+		\PDO::ATTR_CASE => \PDO::CASE_NATURAL,
+		\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+		\PDO::ATTR_ORACLE_NULLS => \PDO::NULL_NATURAL,
+		\PDO::ATTR_STRINGIFY_FETCHES => false,	
 	]
 ]);
 
@@ -41,7 +48,6 @@ ob_start();
 
 //getenv('HTTP_SERVER_ENV');
 require_once __ROOT_DIR.'/public/dbconfig.php';
-
 
 
 require_once __ROOT_DIR.'/core/webauth.php';

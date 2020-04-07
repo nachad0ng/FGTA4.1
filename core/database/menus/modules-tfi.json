@@ -52,7 +52,15 @@
 					"modules" : [
 						"retail/invrpt/invart"
 					]					
-				}				
+				},
+				{
+					"title" : "Sales Report",
+					"disabled" : false,
+					"modules" : [
+						"retail/slrpt/byloc"
+					]					
+				}
+
 				
 			]
 		}

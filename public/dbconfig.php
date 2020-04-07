@@ -36,8 +36,21 @@ define('DB_CONFIG', [
 		'user' => "SYSDBA",
 		'pass' => "Modul@Oblongata"
 	],	
-	
+
+	'FRM2' => [
+		'DSN' => 'dblib:host=172.18.10.20;dbname=E_FRM2_MGP',
+		'user' => 'transminer',
+		'pass' => 'rahasiatfi2012!*'	
+	],
+
+	'FRM2_WIN' => [
+		'DSN' => 'sqlsrv:server=172.18.10.20;Database=E_FRM2_MGP',
+		'user' => 'transminer',
+		'pass' => 'rahasiatfi2012!*'	
+	]	
+
 ]);
+
 
 
 $GLOBALS['MAINDB'] = 'KALISTA';
