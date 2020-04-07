@@ -150,6 +150,7 @@ class SqlUtility {
 		}		
 	}
 
+	
 	public static function Lookup($value, $db, $tablename, $field_id, $field_display) {
 		try {
 			$row = self::LookupRow($value, $db, $tablename, $field_id);
