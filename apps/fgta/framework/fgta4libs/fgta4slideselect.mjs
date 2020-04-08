@@ -31,6 +31,7 @@ export function fgta4slideselect(obj, options) {
 		api: null,
 		fieldValue: 'id',
 		fieldDisplay: 'text',
+		fieldValueMap: options.fieldValue,
 		fields: [],
 		data: null,
 		OnDataLoading: (criteria) => {},
@@ -214,9 +215,9 @@ function grd_list_rowclick(self, tr, ev) {
 	$ui.ResumeScroll(()=>{})
 
 	if (typeof self.options.form.setValue === 'function') {
-		self.options.form.setValue(self.obj, record[self.options.fieldValue], record[self.options.fieldDisplay])
+		self.options.form.setValue(self.obj, record[self.options.fieldValueMap], record[self.options.fieldDisplay])
 	} else {
-		self.obj.combo('setValue', record[self.options.fieldValue])
+		self.obj.combo('setValue', record[self.options.fieldValueMap])
 		self.obj.combo('setText', record[self.options.fieldDisplay])
 	}
 

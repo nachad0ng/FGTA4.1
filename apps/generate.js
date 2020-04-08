@@ -15,6 +15,9 @@ const gen_table = require(path.join(GENLIBDIR, 'gen_table.js'))
 const gen_fs = require(path.join(GENLIBDIR, 'gen_fs.js'))
 
 
+
+
+
 var modulename = process.argv[2]
 var programpath = path.join(__dirname, modulename)
 var genconfigpath = path.join(programpath, '_genconfig.js')
