@@ -135,9 +135,10 @@ class DoLogin extends WebAPI {
 			}
 			
 
+
 			/* ambil daftar group yang bisa digunakan */
 			$available_groups = ['public'];
-			$group_file = dirname(__FILE__)."/../../../../../core/database/grouppriv/groups.json";
+			$group_file = __LOCALDB_DIR . "/grouppriv/groups.json";
 			$group_file_path = realpath($group_file);
 			$group_jsondata = file_get_contents($group_file_path);
 			$group_rawdata = (object) json_decode($group_jsondata, true);
@@ -152,7 +153,7 @@ class DoLogin extends WebAPI {
 			/* ambil real group */ 
 			$group_memberof = ['public'];
 			foreach ($user_groups as $group_id) {
-				$group_file = dirname(__FILE__)."/../../../../../core/database/grouppriv/group.$group_id.json";
+				$group_file = __LOCALDB_DIR . "/grouppriv/group.$group_id.json";
 				if (is_file($group_file)) {
 					$group_file_path = realpath($group_file);
 					$group_jsondata = file_get_contents($group_file_path);

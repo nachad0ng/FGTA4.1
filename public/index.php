@@ -46,10 +46,31 @@ define('DB_CONFIG_PARAM', [
 
 ob_start();
 
-//getenv('HTTP_SERVER_ENV');
-require_once __ROOT_DIR.'/public/dbconfig.php';
+$FGTA_LOCALDB_DIR = __ROOT_DIR.'/core/database';
+$ENV_FGTA_LOCALDB_DIR = getenv('FGTA_LOCALDB_DIR');
+if ($ENV_FGTA_LOCALDB_DIR != '') {
+	if (!is_dir($ENV_FGTA_LOCALDB_DIR)) {
+		die("LocalDb Path: '$ENV_FGTA_LOCALDB_DIR' not found.");
+	} else {
+		$FGTA_LOCALDB_DIR = $ENV_FGTA_LOCALDB_DIR;
+	}
+} 
+define('__LOCALDB_DIR', $FGTA_LOCALDB_DIR);	
 
 
+
+$FGTA_DBCONF_PATH = __ROOT_DIR.'/public/dbconfig.php';
+$ENV_FGTA_DBCONF_PATH=getenv('FGTA_DBCONF_PATH');
+if ($ENV_FGTA_DBCONF_PATH != '') {
+	if (!is_file(getenv('FGTA_DBCONF_PATH'))) {
+		die("Config: '$ENV_FGTA_DBCONF_PATH' not found.");
+	} else {
+		$FGTA_DBCONF_PATH = $ENV_FGTA_DBCONF_PATH;
+	}
+}
+
+
+require_once $FGTA_DBCONF_PATH;
 require_once __ROOT_DIR.'/core/webauth.php';
 require_once __ROOT_DIR.'/core/webmoduleconfig.php';
 require_once __ROOT_DIR.'/core/errorpage.php';

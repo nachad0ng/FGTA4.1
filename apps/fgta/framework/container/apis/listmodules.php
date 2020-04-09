@@ -34,20 +34,20 @@ class ListModules extends WebAPI {
 		switch ($appid) {
 			case 'xasafanrjdnf84rhu4fh04fhos0f4wofw40':
 				// etap
-				return realpath(dirname(__FILE__).'/../../../../../core/database/menus/modules-etap.json');
+				return realpath(__LOCALDB_DIR . '/menus/modules-etap.json');
 
 			default:
-				$menu = realpath(dirname(__FILE__).'/../../../../../core/database/menus/modules-public.json');
+				$menu = realpath(__LOCALDB_DIR . '/menus/modules-public.json');
 				$userdata = json_decode($_SESSION['userdata']);
 				if (array_key_exists('menu', $userdata)) {
-					$usermenu = dirname(__FILE__)."/../../../../../core/database/menus/$userdata->menu";
+					$usermenu = __LOCALDB_DIR . "/menus/$userdata->menu";
 					if (is_file($usermenu)) {
 						$menu = realpath($usermenu);
 					}
 				}
 				return $menu;
 		}
-		
+	
 	}
 
 	public function execute($username) {
@@ -135,7 +135,8 @@ class ModuleShorcut extends ModuleIcon {
 
 		// cek file konfigurasi
 		$moduleconfigpath = "$modulepath/$modulename.json";
-		$moduleconfigpath_ovveride = __ROOT_DIR."/core/database/progaccess/".str_replace("/", "#", $modulefullname) . ".json";
+		$moduleconfigpath_original =  $moduleconfigpath;
+		$moduleconfigpath_ovveride = __LOCALDB_DIR . '/progaccess/' . str_replace("/", "#", $modulefullname) . ".json";
 		if (is_file($moduleconfigpath_ovveride)) {
 			$moduleconfigpath = $moduleconfigpath_ovveride;
 		}	
@@ -145,8 +146,14 @@ class ModuleShorcut extends ModuleIcon {
 			throw new WebException("file konfigurasi untuk '$modulename' tidak ditemukan. ($moduleconfigpath). Cek file konfigurasi, atau mungkin salah penulisan di daftar module pada file '$modulelistpath'",  500);
 		}
 
+		//$mcori = new WebModuleConfig($moduleconfigpath_original);
+		//$moduleconfig = $mcori;
+		$moduleconfig = new WebModuleConfig($moduleconfigpath_original);
+		if ($moduleconfigpath!=$moduleconfigpath_original) {
+			$mcovr = new WebModuleConfig($moduleconfigpath, true); 
+			$moduleconfig = (object) array_merge((array)$moduleconfig, (array)$mcovr);
+		}
 
-		$moduleconfig = new WebModuleConfig($moduleconfigpath);
 		$this->title = $moduleconfig->title;
 		$this->icon = $moduleconfig->icon;
 		$this->forecolor = $moduleconfig->forecolor;
