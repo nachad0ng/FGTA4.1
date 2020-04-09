@@ -9,7 +9,6 @@ date_default_timezone_set('Asia/Jakarta');
 
 
 define('FGTA4', 1);
-define('__APPNAME', 'kalista');
 define('__ROOT_DIR', realpath(dirname(__FILE__).'/..'));
 define('__BASEADDRESS', $_SERVER['REQUEST_SCHEME'] ."://".  $_SERVER['SERVER_NAME'] . rtrim($_SERVER['SCRIPT_NAME'], '/index.php') .'/');
 define('API_LOGIN_URL', 'fgta/framework/login/dologin');
@@ -58,7 +57,6 @@ if ($ENV_FGTA_LOCALDB_DIR != '') {
 define('__LOCALDB_DIR', $FGTA_LOCALDB_DIR);	
 
 
-
 $FGTA_DBCONF_PATH = __ROOT_DIR.'/public/dbconfig.php';
 $ENV_FGTA_DBCONF_PATH=getenv('FGTA_DBCONF_PATH');
 if ($ENV_FGTA_DBCONF_PATH != '') {
@@ -68,6 +66,15 @@ if ($ENV_FGTA_DBCONF_PATH != '') {
 		$FGTA_DBCONF_PATH = $ENV_FGTA_DBCONF_PATH;
 	}
 }
+
+
+$FGTA_APP_NAME = '';
+$ENV_FGTA_APP_NAME=getenv('FGTA_APP_NAME');
+if ($ENV_FGTA_APP_NAME != '') {
+	$FGTA_APP_NAME = $ENV_FGTA_APP_NAME;
+}
+define('__APPNAME', $FGTA_APP_NAME);
+
 
 
 require_once $FGTA_DBCONF_PATH;
@@ -81,7 +88,14 @@ $ROUTER = null;
 try {
 
 	$configuration = new \stdClass;
-	$configuration->basetitle = 'TFI - Kalista';
+
+
+	$FGTA_APP_TITLE = 'FGTA Development';
+	$ENV_FGTA_APP_TITLE=getenv('FGTA_APP_TITLE');
+	if ($ENV_FGTA_APP_TITLE != '') {
+		$FGTA_APP_TITLE = $ENV_FGTA_APP_TITLE;
+	}
+	$configuration->basetitle = $FGTA_APP_TITLE;
 
 
 	if (!array_key_exists('PATH_INFO', $_SERVER)) {
