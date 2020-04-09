@@ -68,9 +68,10 @@ module.exports = async (fsd, genconfig) => {
 		returnpage: this_page_id,
 		api: $ui.apis.load_${fieldname},
 		fieldValue: '${fieldname}',
+		fieldValueMap: '${options.field_value}',
 		fieldDisplay: '${options.field_display}',
 		fields: [
-			{mapping: '${fieldname}', text: '${fieldname}'},
+			{mapping: '${options.field_value}', text: '${options.field_value}'},
 			{mapping: '${options.field_display}', text: '${options.field_display}'},
 		]${datasample}
 	})				
