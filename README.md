@@ -3,5 +3,3 @@ Apabila anda akan mengembangkan suatu aplikasi berbasis web, dan menginginkan ap
 
 FGTA mengutamakan kecepatan pembuatan program, dengan fasilitas suatu generator program yang memungkinkan program dibuat dalam sekejap.
 
-
-test test
