@@ -35,6 +35,15 @@ module.exports = async (fsd, genconfig) => {
 		}
 
 
+		var defaultsearch = headertable.defaultsearch;
+		var srclines = [];
+		for (var srcfield of defaultsearch) {
+			srclines.push(`A.${srcfield} LIKE CONCAT('%', :search, '%')`)
+		}
+		var scrsqlline = srclines.join(' OR ');
+
+
+
 		var primarykey = headertable.primarykeys[0]
 	
 
@@ -45,6 +54,7 @@ module.exports = async (fsd, genconfig) => {
 		tplscript = tplscript.replace('/*{__TABLENAME__}*/', headertable_name)
 		tplscript = tplscript.replace('/*{__PRIMARYID__}*/', primarykey)
 		tplscript = tplscript.replace('/*{__LOOKUPFIELDS__}*/', lookupfields)
+		tplscript = tplscript.replace('/*{__SEARCHSQLLINE__}*/', scrsqlline)
 
 		fsd.script = tplscript
 
