@@ -35,7 +35,22 @@ module.exports = async (fsd, genconfig) => {
 		}
 
 
+
+		var primarykey = headertable.primarykeys[0]
+	
+
+
 		var defaultsearch = headertable.defaultsearch;
+
+		if (defaultsearch==null) {
+			defaultsearch = [primarykey]
+		}
+
+		if (defaultsearch.length==0) {
+			defaultsearch = [primarykey]
+		}
+
+
 		var srclines = [];
 		for (var srcfield of defaultsearch) {
 			srclines.push(`A.${srcfield} LIKE CONCAT('%', :search, '%')`)
@@ -44,8 +59,7 @@ module.exports = async (fsd, genconfig) => {
 
 
 
-		var primarykey = headertable.primarykeys[0]
-	
+
 
 		var mjstpl = path.join(genconfig.GENLIBDIR, 'tpl', 'list_api.tpl')
 		var tplscript = fs.readFileSync(mjstpl).toString()
