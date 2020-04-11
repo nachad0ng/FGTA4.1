@@ -27,12 +27,13 @@ async function PrepareFs(genconfig) {
 	var basename = path.basename(programpath)
 
 	if (fs.existsSync(path.join(programpath, `${basename}.genlock`))) {
-		throw 'Program sudah di lock, tidak bisa digenerate.\r\n';
+		var genlockfile = path.join(programpath, `${basename}.genlock`);
+		var genlockfilecontent = fs.readFileSync(genlockfile)
+		throw 'Program sudah di lock, tidak bisa digenerate.\r\n' + genlockfilecontent;
 	}
 
 
 	InitDetilPages(genconfig)
-
 
 	var fsdata = [
 		{name: 'apis', type:'dir'},

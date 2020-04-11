@@ -144,6 +144,10 @@ async function CreateTableScript(tablename, options, headertable_name, headerpri
 			// console.log(field_def)
 
 
+			// if (fieldname=='deptgroup_level') {
+			// 	console.log(options.data[fieldname].type.defcomp);
+			// }
+
 			// console.log(options.data[fieldname])
 			// // Buat Reference
 			var comp = options.data[fieldname].type.defcomp

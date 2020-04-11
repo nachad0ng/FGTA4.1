@@ -31,7 +31,8 @@
 						"ent/mst/bank",
 
 
-						"ent/mst/depttype"
+						"ent/mst/depttype",
+						"ent/mst/deptgroup"
 					]
 				}	
 			]

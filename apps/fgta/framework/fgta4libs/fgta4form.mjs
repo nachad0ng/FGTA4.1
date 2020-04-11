@@ -838,6 +838,11 @@ async function save(self, opt, fn_callback) {
 		$ui.unmask()
 		return
 	}
+
+	if (options.skipmappingresponse==null) {
+		options.skipmappingresponse=[];
+	}
+
 	
 	data['_state'] = isNewData(self) ? 'NEW' : 'MODIFY';
 
@@ -845,6 +850,7 @@ async function save(self, opt, fn_callback) {
 		data: data,
 		options: options
 	}
+
 
 	var apiurl = options.api
 	try {
@@ -855,6 +861,9 @@ async function save(self, opt, fn_callback) {
 			for (var mapping in result.dataresponse) {
 				if (self.MAPPING[mapping]!==undefined) {
 					for (var obj of self.MAPPING[mapping]) {
+						if (options.skipmappingresponse.includes(obj.mapping)) {
+							continue;
+						} 
 						if (obj.display!=null) {
 							if (result.dataresponse[obj.display]!=null) {
 								setValue(self, obj, result.dataresponse[obj.display])
