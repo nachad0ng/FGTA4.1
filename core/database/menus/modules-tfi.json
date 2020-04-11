@@ -15,26 +15,36 @@
 			"disabled" : false,
 			"modules" : [
 				{
-					"title" : "Master Data",
+					"title" : "General",
 					"disabled" : false,
 					"modules" : [
-						"ent/mst/curr",
-						"ent/mst/unitgroup",
-						"ent/mst/unit",
-
-						"ent/mst/partnertype",
-						"ent/mst/partnerorg",
-						"ent/mst/partner",
-
-						"ent/mst/country",
-
-						"ent/mst/bank",
-
-
-						"ent/mst/depttype",
-						"ent/mst/deptgroup"
+						"ent/general/curr",
+						"ent/general/country",
+						"ent/general/bank"
 					]
-				}	
+				},
+
+				{
+					"title" : "Affiliation",
+					"disabled" : false,
+					"modules" : [
+						"ent/affiliation/partnertype",
+						"ent/affiliation/partnerorg",
+						"ent/affiliation/partner"						
+					]
+				},
+
+				{
+					"title" : "Organisation",
+					"disabled" : false,
+					"modules" : [
+						"ent/organisation/unitgroup",
+						"ent/organisation/unit",
+						"ent/organisation/depttype",
+						"ent/organisation/deptgroup"						
+					]
+				}
+
 			]
 		},
 
