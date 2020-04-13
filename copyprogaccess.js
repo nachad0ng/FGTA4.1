@@ -52,7 +52,7 @@ for (var prj_dc_name of dircontents) {
 
 				var config_to_copy = {
 					allowanonymous: ori_config.allowanonymous,
-					allowedgroups: ori_config.allowedgroups,
+					allowedgroups: ['super', 'administrator'], //ori_config.allowedgroups,
 					apis: ori_config.apis
 				}
 
