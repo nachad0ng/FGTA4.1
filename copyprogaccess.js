@@ -21,6 +21,8 @@ if (!fs.lstatSync(target_config_dir).isDirectory()) {
 }
 
 
+console.log(`Reading directory '${apps_dir}'`);
+
 
 
 var dircontents = fs.readdirSync(apps_dir);
