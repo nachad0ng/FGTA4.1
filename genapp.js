@@ -15,9 +15,6 @@ const GENLIBDIR = path.join(__dirname,  'core', 'generator')
 const gen_fs = require(path.join(GENLIBDIR, 'gen_fs2.js'))
 
 
-
-
-
 var modulename = process.argv[2]
 var programpath = path.join(__dirname, 'apps', modulename)
 var genconfigpath = path.join(programpath, '_genconfig.js')
