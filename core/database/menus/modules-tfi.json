@@ -41,7 +41,8 @@
 						"ent/organisation/unitgroup",
 						"ent/organisation/unit",
 						"ent/organisation/depttype",
-						"ent/organisation/deptgroup"						
+						"ent/organisation/deptgroup",
+						"ent/organisation/deptauth"
 					]
 				}
 
