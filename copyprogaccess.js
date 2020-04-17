@@ -24,7 +24,7 @@ if (!fs.lstatSync(target_config_dir).isDirectory()) {
 console.log(`Reading directory '${apps_dir}' ...`);
 var dircontents = fs.readdirSync(apps_dir);
 for (var prj_dc_name of dircontents) {
-	console.log(prj_dc_name);
+	//console.log(prj_dc_name);
 	var prj_path = path.join(apps_dir, prj_dc_name)
 	if (!fs.lstatSync(prj_path).isSymbolicLink()) { continue; }
 	if (prj_dc_name==='fgta' || prj_dc_name=='etap') { continue; }
