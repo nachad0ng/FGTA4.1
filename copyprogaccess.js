@@ -41,7 +41,7 @@ for (var prj_dc_name of dircontents) {
 			var pro_path = path.join(mod_path, pro_dc_name)
 			if (!fs.lstatSync(pro_path).isDirectory()) { continue; }
 
-			console.log(prj_dc_name, mod_dc_name, pro_dc_name);
+			// console.log(prj_dc_name, mod_dc_name, pro_dc_name);
 			var ori_configfile_path = path.join(pro_path, `${pro_dc_name}.json`)
 			if (fs.existsSync(ori_configfile_path)) {
 				// console.log(ori_configfile_path);
@@ -52,7 +52,7 @@ for (var prj_dc_name of dircontents) {
 
 				var config_to_copy = {
 					allowanonymous: ori_config.allowanonymous,
-					allowedgroups: ['super', 'administrator'], //ori_config.allowedgroups,
+					allowedgroups: ori_config.allowedgroups,
 					apis: ori_config.apis
 				}
 
