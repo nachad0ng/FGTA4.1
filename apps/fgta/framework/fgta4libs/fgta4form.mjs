@@ -660,7 +660,7 @@ function btn_save_click(self) {
 
 					await self.OnDataSaved(result, options)
 
-
+					
 
 					markNewData(self, false)
 					if (options.suppressdialog!==true) {
@@ -684,7 +684,7 @@ function btn_save_click(self) {
 }
 
 function canceledit(self, fn_callback) {
-	$ui.ShowMessage('Data Berubah, Apakah anda akan membatalkan perubahan ?', {
+	$ui.ShowMessage('<div>Data Berubah, Apakah anda akan <b>membatalkan</b> perubahan ?</div>', {
 		"Ya" : () => {
 			reset(self)
 			setViewMode(self, true)
@@ -918,7 +918,7 @@ async function remove(self, opt, fn_callback) {
 	var options = Object.assign({
 		api: `${global.modulefullname}/delete`,
 		cancel: false,
-		confirmationmessage: `Apakah anda yakin akan menghapus data '${idvalue}' ?`,
+		confirmationmessage: `<div>Apakah anda yakin akan <b>menghapus</b> data '${idvalue}' ?</div>`,
 		noconfirm: false
 	}, opt)
 

@@ -45,7 +45,11 @@ module.exports = async (fsd, genconfig) => {
 
 			if (comptype=='combo') {
 				var options = data[fieldname].comp.options
-				lookupsetvalue += `\r\n\t\t\t.setValue(obj.${prefix}${fieldname}, result.record.${fieldname}, result.record.${options.field_display})`
+				var field_display_name = options.field_display;
+				if (options.field_display_name!=null) {
+					field_display_name = options.field_display_name;
+				}
+				lookupsetvalue += `\r\n\t\t\t.setValue(obj.${prefix}${fieldname}, result.record.${fieldname}, result.record.${field_display_name})`
 
 
 				var datasample = ''
@@ -73,7 +77,12 @@ module.exports = async (fsd, genconfig) => {
 		fields: [
 			{mapping: '${options.field_value}', text: '${options.field_value}'},
 			{mapping: '${options.field_display}', text: '${options.field_display}'},
-		]${datasample}
+		]${datasample},
+		//OnDataLoading: (criteria) => {},
+		//OnDataLoaded : (result, options) => {
+		//	result.records.unshift({deptgroup_id:'0', deptgroup_name:'-- PILIH --'});	
+		//},
+		//OnSelected: (value, display, record) => {}
 	})				
 				`;
 			}

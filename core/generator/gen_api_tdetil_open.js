@@ -35,7 +35,11 @@ module.exports = async (fsd, genconfig) => {
 		// untuk componen yang tienya combo, tambah lookup
 		if (comptype=='combo') {
 			var options = data[fieldname].comp.options
-			lookupfields += `\t\t\t\t'${options.field_display}' => \\FGTA4\\utils\\SqlUtility::Lookup($record['${fieldname}'], $this->db, '${options.table}', '${options.field_value}', '${options.field_display}'),\r\n`
+			var field_display_name = options.field_display;
+			if (options.field_display_name!=null) {
+				field_display_name = options.field_display_name;
+			}			
+			lookupfields += `\t\t\t\t'${field_display_name}' => \\FGTA4\\utils\\SqlUtility::Lookup($record['${fieldname}'], $this->db, '${options.table}', '${options.field_value}', '${options.field_display}'),\r\n`
 		}
 
 	}	
