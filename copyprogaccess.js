@@ -46,7 +46,6 @@ for (var prj_dc_name of dircontents) {
 			if (fs.existsSync(ori_configfile_path)) {
 				// console.log(ori_configfile_path);
 
-				// TODO: copy file json disiini
 				var ori_configfile_content = fs.readFileSync(ori_configfile_path)
 				var ori_config = JSON.parse(ori_configfile_content)
 
