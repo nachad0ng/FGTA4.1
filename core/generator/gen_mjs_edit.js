@@ -41,6 +41,8 @@ module.exports = async (fsd, genconfig) => {
 
 			if (comptype=='datebox') {
 				setdefaultnow += `\t\t\tdata.${fieldname} = global.now()\r\n`
+			} else if (comptype=='numberbox') {
+				setdefaultnow += `\t\t\tdata.${fieldname} = 0\r\n`
 			}
 
 			if (comptype=='combo') {
