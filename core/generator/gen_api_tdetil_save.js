@@ -24,6 +24,7 @@ module.exports = async (fsd, genconfig) => {
 	// console.log(data)
 	var lookupfields = ''
 	var uppercasefields = ''
+	var setnullfields = ''
 	var tosqldate = ''
 	var fields = []
 	var fieldreturn = []	
@@ -40,6 +41,11 @@ module.exports = async (fsd, genconfig) => {
 			uppercasefields += `\t\t\t$obj->${fieldname} = strtoupper($obj->${fieldname});\r\n`
 			fieldreturn.push(fieldname)
 		}		
+
+		var allownull = data[fieldname].null;
+		if (allownull) {
+			setnullfields += `\t\t\tif ($obj->${fieldname}=='--NULL--') { unset($obj->${fieldname}); }\r\n`
+		}
 
 		// untuk componen yang tienya combo, tambah lookup
 		if (comptype=='combo') {
@@ -70,6 +76,7 @@ module.exports = async (fsd, genconfig) => {
 	tplscript = tplscript.replace('/*{__TOSQLDATE__}*/', tosqldate)
 	tplscript = tplscript.replace('/*{__TOUPPERCASE__}*/', uppercasefields)
 	tplscript = tplscript.replace('/*{__FIELDRETSEL__}*/', fieldresturnsel)
+	tplscript = tplscript.replace('/*{__SETNULLFIELD__}*/', setnullfields)
 	tplscript = tplscript.replace('/*{__LOOKUPFIELD__}*/', lookupfields)
 	tplscript = tplscript.replace('/*{__HEADERTABLE__}*/', headertable_name)
 	tplscript = tplscript.replace('/*{__HEADERPRIMARYKEY__}*/', header_primarykey)

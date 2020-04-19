@@ -23,11 +23,14 @@ module.exports = async (fsd, genconfig) => {
 		// var field
 		var lookupfields = ''
 		var uppercasefields = ''
+		var setnullfields = ''
 		var tosqldate = ''
 		var fields = []
 		var fieldreturn = []
+
 		for (var fieldname in data) {
 			fields.push(fieldname)
+			fieldreturn.push(fieldname)
 
 			var comptype = data[fieldname].comp.comptype
 			if (comptype=='datebox') {
@@ -37,8 +40,14 @@ module.exports = async (fsd, genconfig) => {
 			var uppercase = data[fieldname].uppercase
 			if (uppercase===true) {
 				uppercasefields += `\t\t\t$obj->${fieldname} = strtoupper($obj->${fieldname});\r\n`
-				fieldreturn.push(fieldname)
 			}
+
+
+			var allownull = data[fieldname].null;
+			if (allownull) {
+				setnullfields += `\t\t\tif ($obj->${fieldname}=='--NULL--') { unset($obj->${fieldname}); }\r\n`
+			}
+
 
 			// untuk componen yang tienya combo, tambah lookup
 			if (comptype=='combo') {
@@ -49,6 +58,7 @@ module.exports = async (fsd, genconfig) => {
 				}				
 				lookupfields += `\t\t\t\t'${field_display_name}' => \\FGTA4\\utils\\SqlUtility::Lookup($data->${fieldname}, $this->db, '${options.table}', '${options.field_value}', '${options.field_display}'),\r\n`
 			}
+
 
 		}
 
@@ -73,6 +83,7 @@ module.exports = async (fsd, genconfig) => {
 		tplscript = tplscript.replace('/*{__TOUPPERCASE__}*/', uppercasefields)
 		tplscript = tplscript.replace('/*{__FIELDRETSEL__}*/', fieldresturnsel)
 		tplscript = tplscript.replace('/*{__LOOKUPFIELD__}*/', lookupfields)
+		tplscript = tplscript.replace('/*{__SETNULLFIELD__}*/', setnullfields)
 
 
 		

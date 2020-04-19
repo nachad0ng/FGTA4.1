@@ -26,16 +26,38 @@ module.exports = async (fsd, genconfig) => {
 	var detiltable = genconfig.persistent[tablename]
 	var data = detiltable.data
 
+
+	var primarykey = detiltable.primarykeys[0]
+	var primarycomppreix = data[primarykey].comp.prefix
+
+	var header_primarykey = headertable.primarykeys[0]
+	var header_primarycomppreix = data[primarykey].comp.prefix
+
+	var headerview_key = primarykey
+	if (detil.headerview!==undefined) {
+		headerview_key = detil.headerview 
+	}
+
+
 	// console.log(data)
 	var slideselectlib = ''
 	var slideselects = ''	
 	var lookupsetvalue = ''
+	var setdefaultcombo = ''
 	var setdefaultnow = ''
+	var skippedfield = '';
+	var updateskippedfield = '';
+	var nullresultloaded = '';	
 	var formcomp = []
 	for (var fieldname in data) {
 		if (fieldexclude.includes(fieldname)) { continue }
 		var prefix = data[fieldname].comp.prefix
 		var comptype = data[fieldname].comp.comptype
+		var recursivetable = false;
+
+		if (data[fieldname].comp.options!==undefined) {
+			recursivetable = data[fieldname].comp.options.table===tablename ? true : false;
+		}
 
 		formcomp.push(`\t${prefix}${fieldname}: $('#${fsd.panel}-${prefix}${fieldname}')`)
 
@@ -46,7 +68,28 @@ module.exports = async (fsd, genconfig) => {
 
 		if (comptype=='combo') {
 			var options = data[fieldname].comp.options
-			lookupsetvalue += `\r\n\t\t\t.setValue(obj.${prefix}${fieldname}, result.record.${fieldname}, result.record.${options.field_display})`
+			var field_display_name = options.field_display;
+			if (options.field_display_name!=null) {
+				field_display_name = options.field_display_name;
+			}			
+			lookupsetvalue += `\r\n\t\t\t.setValue(obj.${prefix}${fieldname}, result.record.${fieldname}, result.record.${field_display_name})`
+
+			var pilihnone = '';
+			var allownull = data[fieldname].null;
+			if (allownull) {
+				setdefaultcombo += `\t\t\tdata.${fieldname} = '--NULL--'\r\n`
+				setdefaultcombo += `\t\t\tdata.${field_display_name} = 'NONE'\r\n`
+				nullresultloaded += `\t\tif (result.record.${fieldname}==null) { result.record.${fieldname}='--NULL--'; result.record.${field_display_name}='NONE'; }\r\n`;
+				pilihnone = `result.records.unshift({${options.field_value}:'--NULL--', ${options.field_display}:'NONE'});`	
+			} else {
+				setdefaultcombo += `\t\t\tdata.${fieldname} = '0'\r\n`
+				setdefaultcombo += `\t\t\tdata.${field_display_name} = '-- PILIH --'\r\n`
+			}				
+
+			if (recursivetable) {
+				skippedfield += `\toptions.skipmappingresponse = ["${fieldname}"];\r\n`;
+				updateskippedfield += `\tform.setValue(obj.${prefix}${fieldname}, result.dataresponse.${fieldname}, result.dataresponse.${field_display_name}!=='--NULL--'?result.dataresponse.${field_display_name}:'NONE')\r\n`;
+			}
 
 
 			var datasample = ''
@@ -75,7 +118,12 @@ module.exports = async (fsd, genconfig) => {
 		fields: [
 			{mapping: '${options.field_value}', text: '${options.field_value}'},
 			{mapping: '${options.field_display}', text: '${options.field_display}'},
-		]${datasample}
+		]${datasample},
+		OnDataLoading: (criteria) => {},
+		OnDataLoaded : (result, options) => {
+			${pilihnone}	
+		},
+		OnSelected: (value, display, record) => {}
 	})				
 			`;
 
@@ -83,16 +131,6 @@ module.exports = async (fsd, genconfig) => {
 
 	}
 
-	var primarykey = detiltable.primarykeys[0]
-	var primarycomppreix = data[primarykey].comp.prefix
-
-	var header_primarykey = headertable.primarykeys[0]
-	var header_primarycomppreix = data[primarykey].comp.prefix
-
-	var headerview_key = primarykey
-	if (detil.headerview!==undefined) {
-		headerview_key = detil.headerview 
-	}
 
 	var mjstpl = path.join(genconfig.GENLIBDIR, 'tpl', 'detilform_mjs.tpl')
 	var tplscript = fs.readFileSync(mjstpl).toString()
@@ -106,6 +144,12 @@ module.exports = async (fsd, genconfig) => {
 	tplscript = tplscript.replace(/<--__FORMCOMPID__-->/g, `${primarycomppreix}${primarykey}`)
 	tplscript = tplscript.replace(/<--__FORMCOMPHEADERID__-->/g, `${header_primarycomppreix}${header_primarykey}`)
 	tplscript = tplscript.replace('/*--__LOOKUPSETVALUE__--*/', lookupsetvalue)
+	tplscript = tplscript.replace('/*--__SETDEFAULTCOMBO__--*/', setdefaultcombo)
+
+	tplscript = tplscript.replace('/*--__SKIPPEDFIELD__--*/', skippedfield)
+	tplscript = tplscript.replace('/*--__UPDATESKIPPEDFIELD__--*/', updateskippedfield)
+	tplscript = tplscript.replace('/*--__NULLRESULTLOADED__--*/', nullresultloaded)
+	
 	tplscript = tplscript.replace('/*--__SLIDESELECTLIB__--*/', slideselectlib)
 	tplscript = tplscript.replace('/*--__SLIDESELECS__--*/', slideselects)
 	tplscript = tplscript.replace('/*--__LOGVIEW__--*/', tablename)

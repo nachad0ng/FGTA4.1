@@ -105,6 +105,8 @@ export function open(data, rowid, viewmode=true, fn_callback) {
 
 	var fn_dataopened = async (result, options) => {
 
+/*--__NULLRESULTLOADED__--*/
+
 		form
 			.fill(result.record)/*--__LOOKUPSETVALUE__--*/
 			.commit()
@@ -147,6 +149,8 @@ export function createnew() {
 
 		// set nilai-nilai default untuk form
 /*--__SETDEFAULTNOW__--*/
+/*--__SETDEFAULTCOMBO__--*/
+
 
 		options.OnCanceled = () => {
 			$ui.getPages().show('pnl_list')
@@ -209,7 +213,7 @@ async function form_datasaving(data, options) {
 
 	// Modifikasi object data, apabila ingin menambahkan variabel yang akan dikirim ke server
 
-
+/*--__SKIPPEDFIELD__--*/
 }
 
 async function form_datasaveerror(err, options) {
@@ -236,6 +240,8 @@ async function form_datasaved(result, options) {
 
 	var data = {}
 	Object.assign(data, form.getData(), result.dataresponse)
+
+/*--__UPDATESKIPPEDFIELD__--*/
 	form.rowid = $ui.getPages().ITEMS['pnl_list'].handler.updategrid(data, form.rowid)
 }
 

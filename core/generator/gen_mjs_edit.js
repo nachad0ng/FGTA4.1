@@ -25,19 +25,32 @@ module.exports = async (fsd, genconfig) => {
 		var headertable = genconfig.persistent[headertable_name]
 		var data = headertable.data
 
+		var primarykey = headertable.primarykeys[0]
+		var primarycomppreix = data[primarykey].comp.prefix
+
+
 		// console.log(data)
 		var slideselectlib = ''
 		var slideselects = ''
 		var lookupsetvalue = ''
 		var setdefaultnow = ''
+		var setdefaultcombo = '';
+		var skippedfield = '';
+		var updateskippedfield = '';
+		var nullresultloaded = '';
 		var formcomp = []
 		for (var fieldname in data) {
 			if (fieldexclude.includes(fieldname)) { continue }
 			var prefix = data[fieldname].comp.prefix
 			var comptype = data[fieldname].comp.comptype
+			var recursivetable = false;
+
+			if (data[fieldname].comp.options!==undefined) {
+				recursivetable = data[fieldname].comp.options.table===headertable_name ? true : false;
+			}
+
 
 			formcomp.push(`\t${prefix}${fieldname}: $('#pnl_edit-${prefix}${fieldname}')`)
-
 
 			if (comptype=='datebox') {
 				setdefaultnow += `\t\t\tdata.${fieldname} = global.now()\r\n`
@@ -53,6 +66,35 @@ module.exports = async (fsd, genconfig) => {
 				}
 				lookupsetvalue += `\r\n\t\t\t.setValue(obj.${prefix}${fieldname}, result.record.${fieldname}, result.record.${field_display_name})`
 
+				var pilihnone = '';
+				var allownull = data[fieldname].null;
+				if (allownull) {
+					setdefaultcombo += `\t\t\tdata.${fieldname} = '--NULL--'\r\n`
+					setdefaultcombo += `\t\t\tdata.${field_display_name} = 'NONE'\r\n`
+					nullresultloaded += `\t\tif (result.record.${fieldname}==null) { result.record.${fieldname}='--NULL--'; result.record.${field_display_name}='NONE'; }\r\n`;
+					pilihnone = `result.records.unshift({${options.field_value}:'--NULL--', ${options.field_display}:'NONE'});`	
+				} else {
+					setdefaultcombo += `\t\t\tdata.${fieldname} = '0'\r\n`
+					setdefaultcombo += `\t\t\tdata.${field_display_name} = '-- PILIH --'\r\n`
+				}				
+
+				hapuspilihansama = '';
+				if (recursivetable) {
+					skippedfield += `\toptions.skipmappingresponse = ["${fieldname}"];\r\n`;
+					updateskippedfield += `\tform.setValue(obj.${prefix}${fieldname}, result.dataresponse.${fieldname}, result.dataresponse.${field_display_name}!=='--NULL--'?result.dataresponse.${field_display_name}:'NONE')\r\n`;
+					hapuspilihansama = `
+			// hapus pilihan yang sama dengan data saat ini
+			var id = obj.${primarycomppreix}${primarykey}.textbox('getText')
+			var i = 0; var idx = -1;
+			for (var d of result.records) {
+				if (d.${primarykey}==id) { idx = i; }
+				i++;
+			}
+			if (idx>=0) { result.records.splice(idx, 1); }					
+			
+			`;	
+
+				}
 
 				var datasample = ''
 				if (options.api===undefined) {
@@ -80,18 +122,16 @@ module.exports = async (fsd, genconfig) => {
 			{mapping: '${options.field_value}', text: '${options.field_value}'},
 			{mapping: '${options.field_display}', text: '${options.field_display}'},
 		]${datasample},
-		//OnDataLoading: (criteria) => {},
-		//OnDataLoaded : (result, options) => {
-		//	result.records.unshift({deptgroup_id:'0', deptgroup_name:'-- PILIH --'});	
-		//},
-		//OnSelected: (value, display, record) => {}
+		OnDataLoading: (criteria) => {},
+		OnDataLoaded : (result, options) => {
+			${hapuspilihansama}${pilihnone}	
+		},
+		OnSelected: (value, display, record) => {}
 	})				
 				`;
 			}
-		}
+		} /// END LOOP
 
-		var primarykey = headertable.primarykeys[0]
-		var primarycomppreix = data[primarykey].comp.prefix
 
 
 		var autoid = genconfig.autoid
@@ -117,6 +157,14 @@ module.exports = async (fsd, genconfig) => {
 		tplscript = tplscript.replace('/*--__AUTOID__--*/', autoid===true ? 'true' : 'false')
 		tplscript = tplscript.replace('/*--__CREATENEW__--*/', detil_createnew_script)
 		tplscript = tplscript.replace('/*--__LOOKUPSETVALUE__--*/', lookupsetvalue)
+		tplscript = tplscript.replace('/*--__SETDEFAULTCOMBO__--*/', setdefaultcombo)
+
+		tplscript = tplscript.replace('/*--__SKIPPEDFIELD__--*/', skippedfield)
+		tplscript = tplscript.replace('/*--__UPDATESKIPPEDFIELD__--*/', updateskippedfield)
+		tplscript = tplscript.replace('/*--__NULLRESULTLOADED__--*/', nullresultloaded)
+
+
+		
 		tplscript = tplscript.replace('/*--__SLIDESELECTLIB__--*/', slideselectlib)
 		tplscript = tplscript.replace('/*--__SLIDESELECS__--*/', slideselects)
 		tplscript = tplscript.replace('/*--__LOGVIEW__--*/', headertable_name)

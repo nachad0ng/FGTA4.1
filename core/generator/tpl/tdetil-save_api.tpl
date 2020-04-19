@@ -52,6 +52,8 @@ class DataSave extends WebAPI {
 /*{__TOSQLDATE__}*/
 /*{__TOUPPERCASE__}*/
 
+/*{__LOOKUPFIELD__}*/
+
 
 			$this->db->setAttribute(\PDO::ATTR_AUTOCOMMIT,0);
 			$this->db->beginTransaction();

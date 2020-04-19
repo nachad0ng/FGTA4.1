@@ -660,7 +660,7 @@ function btn_save_click(self) {
 
 					await self.OnDataSaved(result, options)
 
-					
+					commit(self)
 
 					markNewData(self, false)
 					if (options.suppressdialog!==true) {
@@ -891,9 +891,9 @@ async function save(self, opt, fn_callback) {
 
 		if (typeof fn_callback === 'function') {
 			await fn_callback(null, result, options)
-			commit(self)
+			//commit(self)
 		} else {
-			commit(self)
+			//commit(self)
 			return result
 		}
 

@@ -141,6 +141,9 @@ export function open(data, rowid, hdata) {
 	}
 
 	var fn_dataopened = async (result, options) => {
+
+/*--__NULLRESULTLOADED__--*/
+
 		form
 			.fill(result.record)/*--__LOOKUPSETVALUE__--*/
 			.commit()
@@ -189,6 +192,8 @@ export function createnew(hdata) {
 		data.<!--__DETILNAME__-->_value = 0
 
 /*--__SETDEFAULTNOW__--*/
+/*--__SETDEFAULTCOMBO__--*/
+
 
 		form.rowid = null
 		options.OnCanceled = () => {
@@ -201,11 +206,15 @@ export function createnew(hdata) {
 async function form_datasaving(data, options) {
 	options.api = `${global.modulefullname}/<!--__DETILNAME__-->-save`
 
+/*--__SKIPPEDFIELD__--*/
+
 }
 
 async function form_datasaved(result, options) {
 	var data = {}
 	Object.assign(data, form.getData(), result.dataresponse)
+
+/*--__UPDATESKIPPEDFIELD__--*/
 	form.rowid = $ui.getPages().ITEMS['pnl_edit<!--__DETILNAME__-->grid'].handler.updategrid(data, form.rowid)
 
 	var autoadd = chk_autoadd.prop("checked")
