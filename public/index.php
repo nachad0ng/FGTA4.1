@@ -127,8 +127,15 @@ try {
 				die();
 	
 			default :
-				echo "<html><body>redirecting...</body></html>";
-				echo "<script>location.href='index.php/module/fgta/framework/container'</script>";
+				echo "<html><body>please wait...</body></html>";
+				$startmodule = 'fgta/framework/container';
+
+				$FGTA_START_MODULE=getenv('FGTA_START_MODULE');
+				if ($FGTA_START_MODULE != '') {
+					$startmodule = $FGTA_START_MODULE;
+				}				
+
+				echo "<script>location.href='index.php/module/$startmodule'</script>";
 				die();
 				
 		}
