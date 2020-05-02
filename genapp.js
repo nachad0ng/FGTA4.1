@@ -1,5 +1,7 @@
 'use strict'
 
+// ini untuk generate data
+
 const colReset = "\x1b[0m"
 const colFgRed = "\x1b[31m"
 const colFgGreen = "\x1b[32m"
