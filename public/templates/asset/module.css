@@ -330,7 +330,8 @@ h1 {
 }
 
 .fgtable-row-disabled {
-	background: #666666;
+	background: #999;
+	color: #666
 	/* background-image: linear-gradient(to bottom, #aaaaaa 100%, rgba(0,0,0,.5) 100%) ; */
 }
 
