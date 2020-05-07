@@ -51,7 +51,8 @@
 					"title" : "Location",
 					"disabled":false,
 					"modules" : [
-						"ent/location/area"
+						"ent/location/area",
+						"ent/location/prov"
 					]
 				}
 
