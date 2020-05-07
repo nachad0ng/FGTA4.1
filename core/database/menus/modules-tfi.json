@@ -45,6 +45,14 @@
 						"ent/organisation/deptauth",
 						"ent/organisation/dept"
 					]
+				},
+
+				{
+					"title" : "Location",
+					"disabled":false,
+					"modules" : [
+						"ent/location/area"
+					]
 				}
 
 			]
