@@ -54,7 +54,8 @@
 					"modules" : [
 						"ent/location/area",
 						"ent/location/prov",
-						"ent/location/city"
+						"ent/location/city",
+						"ent/location/zone"
 					]
 				}
 
