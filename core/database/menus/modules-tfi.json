@@ -56,7 +56,8 @@
 						"ent/location/prov",
 						"ent/location/city",
 						"ent/location/zone",
-						"ent/location/landtype"
+						"ent/location/landtype",
+						"ent/location/land"
 					]
 				}
 
