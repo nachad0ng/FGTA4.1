@@ -35,7 +35,7 @@ class DoLogin extends WebAPI {
 				$userdata = new WebUser();
 				$userdata->username = 'root';
 				$userdata->userfullname =  'root';
-				$userdata->groups = ['public', 'root'];
+				$userdata->groups = ['public', 'super'];
 				$userdata->menu = 'modules-root.json';
 			} else if ($username=='example' && $password='example') {
 				$userdata = new WebUser();

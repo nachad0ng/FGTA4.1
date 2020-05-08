@@ -4,7 +4,7 @@ define('DB_CONFIG', [
 	'FGTACLOUD' => [
 		'DSN' => "mysql:host=localhost;dbname=fgtadb",
 		'user' => "root",
-		'pass' => "rahasia"
+		'pass' => ""
 	]
 
 ]);
