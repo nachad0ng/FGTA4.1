@@ -1,6 +1,6 @@
 {
 	"title" : "Users",
-	"allowanonymous" : false,
+	"allowanonymous" : true,
 	"allowedgroups" : ["super", "administrator"],
 	"apis" : {
 		"save" : { "allowanonymous": false, "allowedgroups" : ["public"] },
