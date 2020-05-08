@@ -58,7 +58,8 @@
 						"ent/location/zone",
 						"ent/location/landtype",
 						"ent/location/land",
-						"ent/location/sitegroup"
+						"ent/location/sitegroup",
+						"ent/location/sitemodel"
 					]
 				}
 
