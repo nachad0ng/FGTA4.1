@@ -1,0 +1,78 @@
+.responsive_layout {
+  display: flex;
+  /*flex-wrap: wrap;*/
+  flex-flow: row wrap;
+}
+
+.responsive_column {
+  width: 550px;
+  /* border: 1px solid #000; */
+  display: flex;
+  padding: 2px 2px 2px 2px;
+}
+
+.my_label {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2px 10px 2px 2px;
+}
+
+.my_input {
+  width: 400px;
+  padding-right: 30px;
+  padding: 2px 2px 2px 2px;  
+  /* border: 1px solid #000; */
+}
+
+.my_chkinput {
+  padding-left: 10px;
+  padding: 2px 2px 2px 2px;  	
+  /* border: 1px solid #000; */
+  justify-self: center;
+}
+
+.my_chklabel {
+  width: 135px;
+  display: inline-block;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 2px 10px 2px 2px;
+}
+
+input {
+  border: 1px solid rgb(212, 212, 238);
+  height: 25px;
+}
+
+@media screen and (max-width: 520px) { 
+
+  .responsive_column {
+    display: block;
+    padding: 2px 2px 2px 2px;
+  }
+
+  .my_label {
+    display: block;    
+    margin-top: 10px;
+    margin-bottom: 2px;
+    justify-content: flex-start;
+  }
+
+  .my_input {
+    display: block;    
+  }
+
+  .my_chklabel {
+    display: none;
+  }
+
+  .my_chkinput {
+    margin-top: 10px;
+    margin-left: 0px;
+    display: block;            
+    /* border: 1px solid #000; */
+  }
+
+}

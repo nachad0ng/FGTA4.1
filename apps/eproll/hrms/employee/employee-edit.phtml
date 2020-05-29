@@ -1,0 +1,254 @@
+<div id="pnl_edit">
+	<div class="fgta-page-title" style="display: flex; align-items: center ">
+		<div>Edit</div>
+		<a id="pnl_edit-btn_edit" href="javascript:void(0)" class="easyui-linkbutton" style="margin-left:10px;" data-options="plain:true,iconCls:'fgta-icon-edit'">edit</a>
+	</div>
+
+
+	<form id="pnl_edit-form">
+           
+      <div class="responsive_layout">        
+        <div class="responsive_column">
+          <div class="form_label_col my_label">ID</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-txt_employee_id" class="easyui-textbox" mapping="employee_id" style="width: 100%;">
+          </div>
+        </div>      
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Nama Lengkap</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-txt_employee_name" class="easyui-textbox" mapping="employee_name" style="width: 100%;">
+          </div>
+        </div>           
+      </div>
+
+      <div class="responsive_layout">
+        <div class="responsive_column">
+          <div class="form_label_col my_label">NIPP</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-txt_employee_nipp" class="easyui-textbox" mapping="employee_nipp" style="width: 100%;">
+          </div>
+        </div>
+        <div class="responsive_column">
+          <div class="form_label_col my_label">KTP</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-txt_employee_ktp" class="easyui-textbox" mapping="employee_ktp" style="width: 100%;">
+          </div>
+        </div>
+      </div>      
+
+      <div class="responsive_layout">
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Tempat Lahir</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-txt_employee_tplahir" class="easyui-textbox" mapping="employee_tplahir" style="width: 100%;">
+          </div>
+        </div>      
+        <div class="responsive_column">   
+          <div class="form_label_col my_label">Tanggal Lahir</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-dt_employee_tglahir" class="easyui-datebox" style="width: 100%;" mapping="employee_tglahir" data-options="editable:false">
+          </div>
+        </div>
+      </div>
+
+      <div class="responsive_layout">
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Alamat</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-txt_employee_alamat" class="easyui-textbox" mapping="employee_alamat" style="width: 100%;">
+          </div>
+        </div>
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Jenis Kelamin</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-txt_employee_sex" class="easyui-combobox" mapping="employee_sex" style="width: 100%;" display="sex" data-options="editable:false, valueField:'id', textField:'text'">
+          </div>
+        </div>
+      </div>
+
+      <div class="responsive_layout">
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Agama</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-cbo_agama_id" class="easyui-combo" style="width: 400px" mapping="agama_id" display="agama_name" data-options="editable:false, valueField:'id', textField:'text'">
+          </div>
+        </div>
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Pendidikan</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-cbo_edu_id" class="easyui-combo" style="width: 400px" mapping="edu_id" display="edu_name" data-options="editable:false, valueField:'id', textField:'text'">
+          </div>
+        </div>
+      </div>
+
+      <div class="responsive_layout">
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Email</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-txt_employee_email" class="easyui-textbox" mapping="employee_email" style="width: 100%;">
+          </div>
+        </div>
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Status Pernikahan</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-txt_employee_status" class="easyui-combobox" mapping="employee_status" style="width: 100%;" data-options="editable:false, valueField:'id', textField:'text'">            
+          </div>
+        </div>
+      </div>
+
+      <div class="responsive_layout">
+        <div class="responsive_column">
+          <div class="form_label_col my_label">No. Telp</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-txt_employee_telp" class="easyui-textbox" mapping="employee_telp" style="width: 100%;">
+          </div>
+        </div>
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Jumlah Tanggungan</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-txt_employee_tanggungan" class="easyui-numberbox" mapping="employee_tanggungan" style="width: 400px" data-options="precision: 0, decimalSeparator:'.', groupSeparator:','">
+          </div>
+        </div>
+      </div>
+
+      <div class="responsive_layout">
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Regional</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-cbo_regional_id" class="easyui-combo" style="width: 400px" mapping="regional_id" display="regional_name" data-options="editable:false, valueField:'id', textField:'text'">
+          </div>
+        </div>
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Jabatan</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-cbo_jabatan_id" class="easyui-combo" style="width: 400px" mapping="jabatan_id" display="jabatan_name" data-options="editable:false, valueField:'id', textField:'text'">
+          </div>
+        </div>
+      </div>
+
+      <div class="responsive_layout">
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Divisi/ Departemen</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-cbo_divisi_id" class="easyui-combo" style="width: 400px" mapping="divisi_id" display="divisi_name" data-options="editable:false, valueField:'id', textField:'text'">
+          </div>
+        </div>
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Golongan</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-cbo_gol_id" class="easyui-combo" style="width: 400px" mapping="gol_id" display="gol_name" data-options="editable:false, valueField:'id', textField:'text'">
+          </div>
+        </div>
+      </div>
+
+      <div class="responsive_layout">
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Status Kontrak</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-cbo_kontrak_id" class="easyui-combo" style="width: 400px" mapping="kontrak_id" display="kontrak_name" data-options="editable:false, valueField:'id', textField:'text'">
+          </div>
+        </div>
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Tanggal Mulai</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-dt_employee_datestart" class="easyui-datebox" style="width: 100%;" mapping="employee_datestart" data-options="editable:false">
+          </div>
+        </div>
+      </div>
+
+      <div class="responsive_layout">
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Tanggal Berakhir</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-dt_employee_dateend" class="easyui-datebox" style="width: 100%;" mapping="employee_dateend" data-options="editable:false">
+          </div>
+        </div>
+        <div class="responsive_column">
+          <div class="form_label_col my_label">Shift Kerja</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">            
+          <input id="pnl_edit-cbo_employee_isshift" class="easyui-combobox" style="width: 100%;" mapping="employee_isshift" display="shift" data-options="editable:false, valueField:'id', textField:'text'">
+          </div>
+        </div>
+      </div>
+
+      <div class="responsive_layout">
+        <div class="responsive_column">
+          <div class="form_label_col my_label">NPWP</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-txt_employee_npwp" class="easyui-textbox" mapping="employee_npwp" style="width: 100%;">
+          </div>
+        </div>
+        <div class="responsive_column">
+          <div class="form_label_col my_label">PTKP</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">            
+            <input id="pnl_edit-cbo_ptkp_id" class="easyui-combo" style="width: 400px" mapping="ptkp_id" display="ptkp_name" data-options="editable:false, valueField:'id', textField:'text'">
+          </div>
+        </div>
+      </div>
+
+      <div class="responsive_layout">
+        <div class="responsive_column">
+          <div class="form_label_col my_chklabel">&nbsp;</div>
+          <div class="form_input_col my_chkinput" style="border: 0px solid black">
+            <input id="pnl_edit-chk_employee_isactive"  class="easyui-checkbox c1" mapping="employee_isactive" data-options="label: 'Active', labelPosition: 'after', disabled:false, checked: false">
+          </div>
+        </div>
+        <div class="responsive_column">
+          <div class="form_label_col my_chklabel">&nbsp;</div>
+          <div class="form_input_col my_chkinput" style="border: 0px solid black">
+            <input id="pnl_edit-chk_employee_isdisabled" class="easyui-checkbox c1" mapping="employee_isdisabled" data-options="label: 'Disabled', labelPosition: 'after', disabled:true, checked: false">
+          </div>
+        </div> 
+       
+      </div>
+
+      <div class="responsive_layout">
+       <div class="responsive_column">
+          <div class="form_label_col my_label">BANK</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">
+            <input id="pnl_edit-cbo_bank_id" class="easyui-combo" style="width: 400px" mapping="bank_id" display="bank_name" data-options="editable:false, valueField:'id', textField:'text'">
+          </div>
+        </div>
+        <div class="responsive_column">
+          <div class="form_label_col my_label">No. Rekening</div>
+          <div class="form_input_col my_input" style="border: 0px solid black">            
+            <input id="pnl_edit-txt_employee_rek" class="easyui-textbox" mapping="employee_rek" style="width: 100%;">
+          </div>
+        </div>        
+      </div>
+
+	</form>
+
+	<div class="form_row" style="margin-top: 30px;">
+		<div class="form_label_col my_chklabel"></div>
+		<div class="form_input_col my_chkinput" style="border: 0px solid black">
+			<a id="pnl_edit-btn_save" class="easyui-linkbutton c1" style="width">Simpan</a>
+		</div>
+	</div>	
+
+
+
+		<div id="pnl_edit-detil" class="form_row" style="margin-top: 30px">
+			<div class="form_label_col my_chklabel"></div>
+			<div class="form_input_col" style="border: 0px solid black">
+				<div class="fgtable-head" style="height: 25px; padding: 5px 0px 0px 5px">Detil Informations</div>
+				<div class="fgtable-head-drow" style="height: 25px; padding: 5px 0px 0px 5px" onclick="$ui.getPages().ITEMS['pnl_edit'].handler.detil_open('pnl_editKomponengrid')">Komponen</div>
+
+			</div>		
+		</div>		
+		
+		
+
+
+	<div style="margin-top: 30px; margin-left:-5px; margin-right: -5px; background-color: #cccccc; height: 40px; display: flex; justify-content: space-between; padding: 5px 2px 2px 2px ">
+		<div>
+			<!-- letakkan tombol yang lin disini -->
+		</div>
+		<div>
+			<a id="pnl_edit-btn_delete" class="easyui-linkbutton c5" style="width">Hapus</a>
+		</div>
+	</div>
+
+</div>
+
