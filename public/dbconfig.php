@@ -2,9 +2,9 @@
 
 define('DB_CONFIG', [
 	'FGTACLOUD' => [
-		'DSN' => "mysql:host=localhost;dbname=fgtadb",
-		'user' => "root",
-		'pass' => ""
+		'DSN' => "mysql:host=localhost;dbname=PROLL_DB",
+		'user' => "supermane",
+		'pass' => "rahasia"
 	]
 
 ]);
@@ -14,4 +14,4 @@ define('DB_CONFIG', [
 $GLOBALS['MAINDB'] = 'FGTACLOUD';
 $GLOBALS['MAINDBTYPE'] = 'mariadb';
 
-$GLOBALS['MAIN_USERTABLE'] = 'fgtadb.fgt_user';
+$GLOBALS['MAIN_USERTABLE'] = 'proll_db.fgt_user';
